@@ -10,6 +10,11 @@ auto drive_chassis = ChassisControllerBuilder()
     .withDimensions(GRN_CART, {{10_in, 10.5_in}, imev5GreenTPR})
     .build();
 
+auto chassis_ctrl = AsyncMotionProfileControllerBuilder()
+    .withOutput(drive_chassis)
+    .withLimits({1.0, 2.0, 10.0})
+    .buildMotionProfileController();
+
 //Helper Functions
 
 //Main Functions
@@ -27,6 +32,14 @@ void drive_op(void) {
             master_ctrl.getAnalog(JOY_RY),
             2.0
         );
+    }
+}
+
+void drive_aut_smpl(int mode) {
+    if (mode == 0) {
+
+    } else if (mode == 1) {
+
     }
 }
 
